@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: usercenter
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG-SERVER
+      profile: dev
+      label: master
+  zipkin:
+    base-url: http://127.0.0.1:9411/
+  sleuth:
+    sampler:
+      rate: 100
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+logging:
+  level:
+    com.illusion.spring.feignclient: debug

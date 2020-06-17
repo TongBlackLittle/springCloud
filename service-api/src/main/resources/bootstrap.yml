@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: service-api
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: CONFIG-SERVER
+      profile: dev
+      label: master
+  zipkin:
+    base-url: http://127.0.0.1:9411/
+  sleuth:
+    sampler:
+      rate: 10
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+management:
+  server:
+    servlet:
+      context-path: /
+logging:
+  level:
+    com.illusion.spring.feignclient: debug
